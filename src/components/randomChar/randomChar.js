@@ -5,10 +5,15 @@ import Spinner from '../spinner';
 import ErrorMessage from '../errorMessage'
 
 export default class RandomChar extends Component {
-
-    constructor(){
-        super();
+    componentDidMount(){
         this.updateCharacter();
+        this.timeId = setInterval(() => {
+            this.updateCharacter();
+        }, 4000);
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.timeId);
     }
 
     gotService = new gotService();
@@ -58,6 +63,7 @@ export default class RandomChar extends Component {
 
 const View = ({character}) => {
     const {name, gender, born, died, culture} = character;
+    
     return(
         <>
          <h4>Random Character: {name}</h4>

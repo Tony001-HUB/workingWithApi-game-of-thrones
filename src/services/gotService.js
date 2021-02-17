@@ -13,8 +13,8 @@ class GotService{
         return await res.json();
     };
 
-    async getAllCharacters(){
-        const res = await this.getResurse('/characters?page=5&pageSize=10');
+    async getAllCharacters() {
+        const res = await this.getResurse(`/characters?page=5&pageSize=10`);
         return res.map(this._transformCharacter);
     }
 
@@ -43,13 +43,22 @@ class GotService{
         this._transformCharacter(book);
     }
 
-    _transformCharacter(character){
+    isDataNull(data){
+        if(data){
+            return data;
+        }else{
+            return "No data found";
+        }
+    }
+
+
+    _transformCharacter = (character) =>{
         return {
-            name: character.name,
-            gender: character.gender,
-            born: character.born,
-            died: character.died,
-            culture: character.culture
+            name: this.isDataNull(character.name),
+            gender: this.isDataNull(character.gender),
+            born: this.isDataNull(character.born),
+            died: this.isDataNull(character.died),
+            culture: this.isDataNull(character.culture)
         }
     }
 
