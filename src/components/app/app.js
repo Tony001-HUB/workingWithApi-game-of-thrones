@@ -4,54 +4,54 @@ import Header from '../header';
 import RandomChar from '../randomChar';
 import ItemList from '../itemList';
 import CharDetails from '../charDetails';
-import './app.css';
 
-export default class App extends Component {
+export default class App extends Component{
+
     state = {
-        showRandomChar: true,
-        selectedCharacter: 130
+        toggleForm: true,
+        charSelected: 120
     }
 
-    toggleRandomChar = () => {
+    toggleButton = () => {
         this.setState((state) => {
             return{
-                showRandomChar: !state.showRandomChar
+                toggleForm: !state.toggleForm 
             }
         });
     }
 
-    onCharacterSelected = (id) =>{
+    onSelectedCharacter = (id) => {
         this.setState({
-            selectedCharacter: id
-        });
+            charSelected: id
+        })
     }
 
     render(){
-        const character = this.state.showRandomChar ? <RandomChar/> : null;
+
+        const toggleForm = this.state.toggleForm ;
+        const char = toggleForm ? <RandomChar/> : null;
+
         return (
             <> 
-                <Container>
-                    <Header />
-                </Container>
-                <Container>
-                            <button 
-                                className="toggle-btn"
-                                onClick={this.toggleRandomChar}>show / hide random character    
-                            </button>
-                    <Row>
-                        <Col lg={{size: 5, offset: 0}}>
-                            {character}
-                        </Col>           
-                    </Row>
-                    <Row>
-                        <Col md='6'>
-                            <ItemList onCharacterSelected={this.onCharacterSelected} />
-                        </Col>
-                        <Col md='6'>
-                            <CharDetails characterId={this.state.selectedCharacter}/>
-                        </Col>
-                    </Row>
-                </Container>
+            <Container>
+                <Header />
+            </Container>
+            <Container>
+            <button onClick={this.toggleButton}> click me </button>
+                <Row>
+                    <Col lg={{size: 5, offset: 0}}>
+                        {char}
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md='6'>
+                        <ItemList  onSelectedCharacter={this.onSelectedCharacter}/>
+                    </Col>
+                    <Col md='6'>
+                    <CharDetails  charId={this.state.charSelected}/>
+                    </Col>
+                </Row>
+            </Container>
             </>
         );
     }

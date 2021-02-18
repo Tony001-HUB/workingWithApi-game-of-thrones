@@ -4,10 +4,16 @@ import './spinner.css'
 
 const Spinner = () => {
     return(
-    <div className="loadingio-spinner-gear-fryteq1fgz"><div className="ldio-1mhiw2eqxyc">
-    <div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        <>
+    <div className="loadingio-spinner-eclipse-qaq9opz5h5c"><div className="ldio-u02xddgf9g">
+    <div></div>
     </div></div>
+    <style type="text/css"></style>
+        </>
     )
 }
 
 export default Spinner;
+
+
+

@@ -1,51 +1,32 @@
-@keyframes ldio-1mhiw2eqxyc {
+@keyframes ldio-u02xddgf9g {
     0% { transform: rotate(0deg) }
-   50% { transform: rotate(22.5deg) }
-  100% { transform: rotate(45deg) }
-}
-.ldio-1mhiw2eqxyc > div {
-  transform-origin: 100px 100px;
-  animation: ldio-1mhiw2eqxyc 0.2s infinite linear;
-}
-.ldio-1mhiw2eqxyc > div div {
+    50% { transform: rotate(180deg) }
+    100% { transform: rotate(360deg) }
+  }
+  .ldio-u02xddgf9g div {
     position: absolute;
-    width: 22px;
-    height: 152px;
-    background: #0f2356;
-    left: 100px;
-    top: 100px;
-    transform: translate(-50%,-50%);
-}
-.ldio-1mhiw2eqxyc > div div:nth-child(1) {
-    width: 120px;
-    height: 120px;
+    animation: ldio-u02xddgf9g 1s linear infinite;
+    width: 160px;
+    height: 160px;
+    top: 20px;
+    left: 20px;
     border-radius: 50%;
-}
-.ldio-1mhiw2eqxyc > div div:nth-child(6) {
-    width: 80px;
-    height: 80px;
-    background: #f1f2f3;
-    border-radius: 50%;
-}.ldio-1mhiw2eqxyc > div div:nth-child(3) {
-  transform: translate(-50%,-50%) rotate(45deg)
-}.ldio-1mhiw2eqxyc > div div:nth-child(4) {
-  transform: translate(-50%,-50%) rotate(90deg)
-}.ldio-1mhiw2eqxyc > div div:nth-child(5) {
-  transform: translate(-50%,-50%) rotate(135deg)
-}
-.loadingio-spinner-gear-fryteq1fgz {
-  width: 200px;
-  height: 200px;
-  display: inline-block;
-  overflow: hidden;
-  background: #f1f2f3;
-}
-.ldio-1mhiw2eqxyc {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform: translateZ(0) scale(1);
-  backface-visibility: hidden;
-  transform-origin: 0 0; /* see note above */
-}
-.ldio-1mhiw2eqxyc div { box-sizing: content-box; }
+    box-shadow: 0 4px 0 0 #e15b64;
+    transform-origin: 80px 82px;
+  }
+  .loadingio-spinner-eclipse-qaq9opz5h5c {
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    overflow: hidden;
+    background: #ffffff;
+  }
+  .ldio-u02xddgf9g {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: translateZ(0) scale(1);
+    backface-visibility: hidden;
+    transform-origin: 0 0; /* see note above */
+  }
+  .ldio-u02xddgf9g div { box-sizing: content-box; }

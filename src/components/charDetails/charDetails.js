@@ -1,38 +1,42 @@
 import React, {Component} from 'react';
 import './charDetails.css';
-import gotService from '../../services/gotService'
-
+import GoTService from '../../services/GoTService';
 
 export default class CharDetails extends Component {
 
-    gotService = new gotService();
+    gotService = new GoTService();
 
     state = {
-        chzar: null
+        char: null
     }
 
-    componentDidMount(){
-       this.updateCharacter();
+    componentDidMount() {
+        this.updateChar();
     }
+    
+    updateChar () {
+        const {charId} = this.props;
 
-    updateCharacter(){
-        const {characterId} = this.props;
-        if(!characterId){return;}
+        if(!charId){
+            return;
+        }
 
-        this.gotService.getCharacter(characterId)
-            .then((item) => {
-                this.setState({item})
-        });
+        this.gotService.getCharacter(charId)
+            .then((char) => {
+                this.setState({
+                    char
+                })
+            })
     }
 
     render() {
 
-        if(!this.setState.character){
-            return <span className='select-error'>pls select a character</span>
+        if(!this.state.char){
+            return <span className = 'char-details'>Click on the character, pls</span>
         }
 
         const {name, gender, born, died, culture} = this.state.char;
-        
+
         return (
             <div className="char-details rounded">
                 <h4>{name}</h4>
@@ -57,5 +61,4 @@ export default class CharDetails extends Component {
             </div>
         );
     }
-    
 }
