@@ -2,15 +2,23 @@ import React, {Component} from 'react';
 import {Col, Row, Container} from 'reactstrap';
 import Header from '../header';
 import RandomChar from '../randomChar';
-import ItemList from '../itemList';
-import CharDetails from '../charDetails';
+import ErrorMess from '../errorMess';
+import CharPage from '../charPage';
+
 
 export default class App extends Component{
 
     state = {
         toggleForm: true,
-        charSelected: 120
+        error: false
     }
+
+    componentDidCatch() {
+        this.setState({
+            error: true
+        })
+    }
+
 
     toggleButton = () => {
         this.setState((state) => {
@@ -18,15 +26,14 @@ export default class App extends Component{
                 toggleForm: !state.toggleForm 
             }
         });
-    }
-
-    onSelectedCharacter = (id) => {
-        this.setState({
-            charSelected: id
-        })
+        
     }
 
     render(){
+
+        if(this.state.error){
+            return <ErrorMess/>
+        }
 
         const toggleForm = this.state.toggleForm ;
         const char = toggleForm ? <RandomChar/> : null;
@@ -43,14 +50,7 @@ export default class App extends Component{
                         {char}
                     </Col>
                 </Row>
-                <Row>
-                    <Col md='6'>
-                        <ItemList  onSelectedCharacter={this.onSelectedCharacter}/>
-                    </Col>
-                    <Col md='6'>
-                    <CharDetails  charId={this.state.charSelected}/>
-                    </Col>
-                </Row>
+                <CharPage/>
             </Container>
             </>
         );

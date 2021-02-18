@@ -10,6 +10,13 @@ export default class CharDetails extends Component {
         char: null
     }
 
+    componentDidUpdate(prevProps) {
+        if(this.props.charId !== prevProps.charId) {
+            this.updateChar();
+        }
+
+    }
+
     componentDidMount() {
         this.updateChar();
     }
