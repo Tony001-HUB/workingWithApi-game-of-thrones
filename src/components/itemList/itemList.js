@@ -6,18 +6,19 @@ import Spinner from '../spinner';
 
 export default class ItemList extends Component {
 
-
     gotService = new GoTService();
 
     state = {
-        charList: null
+        itemList: null
     }
 
     componentDidMount() {
-        this.gotService.getAllCharacters()
-            .then((charList) => {
+        const {getData} = this.props;
+        
+        getData()
+            .then((itemList) => {
                 this.setState({
-                charList
+                itemList
             });
         });
     }
@@ -38,13 +39,13 @@ export default class ItemList extends Component {
 
     render() {
 
-        const {charList} = this.state;
+        const {itemList} = this.state;
 
-        if(!charList){
+        if(!itemList){
             return <Spinner/>
         }
 
-        const allChars = this.renderChar(charList);
+        const allChars = this.renderChar(itemList);
 
         return (
             <ul className="item-list list-group">

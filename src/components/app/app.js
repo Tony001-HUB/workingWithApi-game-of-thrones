@@ -4,9 +4,14 @@ import Header from '../header';
 import RandomChar from '../randomChar';
 import ErrorMess from '../errorMess';
 import CharPage from '../charPage';
+import ItemList from '../itemList';
+import CharDetails from '../charDetails';
+import GoTService from '../../services/GoTService';
 
 
 export default class App extends Component{
+
+    gotService = new GoTService();
 
     state = {
         toggleForm: true,
@@ -51,6 +56,27 @@ export default class App extends Component{
                     </Col>
                 </Row>
                 <CharPage/>
+                <Row>
+                    <Col md='6'>
+                        <ItemList  onSelectedCharacter={this.onSelectedCharacter}
+                        getData = {this.gotService.getAllHouses}
+                        />
+                    </Col>
+                    <Col md='6'>
+                    <CharDetails  charId={this.state.charSelected}/>
+                    </Col>
+                </Row>
+
+                <Row>
+                    <Col md='6'>
+                        <ItemList  onSelectedCharacter={this.onSelectedCharacter}
+                        getData = {this.gotService.getAllBooks}
+                        />
+                    </Col>
+                    <Col md='6'>
+                    <CharDetails  charId={this.state.charSelected}/>
+                    </Col>
+                </Row>
             </Container>
             </>
         );
