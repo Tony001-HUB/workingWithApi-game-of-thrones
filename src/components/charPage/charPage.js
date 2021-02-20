@@ -1,17 +1,16 @@
 import React, {Component} from 'react';
-import {Col, Row} from 'reactstrap';
 import ItemList from '../itemList';
-import CharDetails from '../charDetails';
+import CharDetails, {Field} from '../charDetails';
 import ErrorMess from '../errorMess';
 import GoTService from '../../services/GoTService';
-
+import RowBlock from '../rowBlock'
 
 export default class extends Component{
 
     gotService = new GoTService();
 
     state = {
-        onSelectedCharacter: null,
+        onItemSelected: null,
         error: false
     }
 
@@ -21,7 +20,7 @@ export default class extends Component{
         })
     }
 
-    onSelectedCharacter = (id) => {
+    onItemSelected = (id) => {
         this.setState({
             charSelected: id
         })
@@ -34,19 +33,25 @@ export default class extends Component{
             return <ErrorMess/>
         }
 
+        const itemList = (
+                <ItemList  
+                onItemSelected={this.onItemSelected}
+                getData = {this.gotService.getAllCharacters}
+                renderItem = {({name, gender}) => `${name} (${gender})`}
+                />
+        )
+
+        const charDetails = (
+            <CharDetails  charId={this.state.charSelected}>
+                <Field field='gender' lable='Gender'/>
+                <Field field='born' lable='Born'/>
+                <Field field='died' lable='Died'/>
+                <Field field='culture' lable='Culture'/> 
+            </CharDetails>
+        )
+
         return(
-            <>
-                <Row>
-                    <Col md='6'>
-                        <ItemList  onSelectedCharacter={this.onSelectedCharacter}
-                        getData = {this.gotService.getAllCharacters}
-                        />
-                    </Col>
-                    <Col md='6'>
-                    <CharDetails  charId={this.state.charSelected}/>
-                    </Col>
-                </Row>
-            </>
+            <RowBlock left={itemList} right={charDetails}/>
         )
     }
 
